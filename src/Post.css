@@ -1,0 +1,11 @@
+.post{
+  border:2px dotted black;
+  height:500px;
+}
+.delete{
+  float:right;
+}
+.title{
+  margin:4%;
+  margin-top:15%
+}
