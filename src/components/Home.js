@@ -1,37 +1,38 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import PostDetails from './PostDetails';
 import '../Home.css';
-import NewPost from './NewPost';
-import Post from './Post';
-import {BrowserRouter as Router, Route, NavLink,Link, Switch, Redirect, Prompt} from 'react-router-dom';
+import{
+	BrowserRouter as Router,
+	Route,
+	NavLink,
+  Link,
+	Redirect,
+	Prompt,
+	Switch
+} from 'react-router-dom';
 
-class Home extends Component{
-  handlePost = ()=>{
-
-  }
-  render(){
-
-    let arr = this.props.titleCategory.map((title,key) =>
-     <li key={key} onClick={this.handlePost}>
-     <NavLink NavLink exact to = {`/Post/${key}`}>
-     Index:{key} Title: {title.Title} <br/>
-     Category: {title.Category} <br />
-     Post: {title.Post}
-     </NavLink>
-     </li>);
-
-    return(
+class Home extends Component {
+  render() {
+    let posts = this.props.posts.map((post,index) =>
+                      <li key={index.toString()} className="Posts" onClick={this.handlePostDetails}>
+                        <NavLink className="addButton" exact to={`/PostDetails/${index}` }>
+                        <div className="flex">
+                         <div>{post.title}</div> <br />
+                         <div>{post.category}</div>
+                        </div>
+                        </NavLink>
+                      </li>);
+    return (
       <div className="Home">
-
-        <button className="addButton" >
-        <NavLink NavLink exact to="/NewPost">
-        Add
+      <button  className="homeBtn">
+        <NavLink NavLink exact to="/NewPost" className="addButton">
+          Add Post
         </NavLink>
-        </button>
-
-        {arr}
-
+      </button>
+        {posts}
       </div>
     );
   }
 }
+
 export default Home;

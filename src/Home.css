@@ -1,7 +1,25 @@
 .Home{
   border:2px dotted black;
-  height:500px;
+  height:auto;
+}
+
+.Posts{
+  border:2px dotted black;
+  list-style-type: none;
+  margin-top:7%;
+}
+.flex{
+  display:flex;
+  justify-content: space-between;
 }
 .addButton{
-  float:right
+  text-decoration: none;
+}
+.homeBtn{
+  border-radius: 5%;
+  border: 2px dotted black;
+  background-color: transparent;
+  width:10%;
+  height:40px;
+
 }

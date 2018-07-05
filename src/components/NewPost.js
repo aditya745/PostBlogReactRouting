@@ -1,58 +1,79 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../NewPost.css';
-import {BrowserRouter as Router, Route, NavLink,Link, Switch, Redirect, Prompt} from 'react-router-dom';
-class NewPost extends Component{
-  handleSubmit = (e)=>{
-    e.preventDefault();
-    let Title = this.refs.Title.value;
-    let Category = this.refs.Category.value;
-    let Post = this.refs.Post.value;
-    this.props.handleAdd(Title,Category,Post);
+import{
+	BrowserRouter as Router,
+	Route,
+	NavLink,
+  Link,
+	Redirect,
+	Prompt,
+	Switch
+} from 'react-router-dom';
 
+class NewPost extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      title:'',
+      category:'',
+      description:''
+    }
   }
-  render(){
-    return(
+  onChange =(e) =>{
+    let name =e.target.name;
+    let value =e.target.value;
+    this.setState({
+      [name]:value
+    });
+  }
+  handleAddInput =(e) =>{
+    e.preventDefault();
+
+    this.props.handleAddInput(this.state);
+  
+  }
+  render() {
+    return (
       <div className="newPost">
-        <form >
+        <div className="form-area">
+          <form>
 
-          <label for="input1">Title:</label>
-          <input
-          type="text"
-          id="input1"
-          name="Title"
-          ref="Title"
-          /><br />
+            <label id="lb1">
+                 Title:
+                <input type="text"
+                       name="title"
+                       value={this.state.title}
+                       onChange={this.onChange} id="in1"/>
+            </label>
+            <br /> <br />
 
-          <label for="input2">Category:</label>
-          <input
-          type="text"
-          id="input2"
-          name="Category"
-          ref= "Category"
-          /><br />
+            <label id="lb2">
+                Category:
+                <input type="text"
+                       name="category"
+                       value={this.state.category}
+                       onChange={this.onChange} />
+            </label>
+            <br />
+            <label>
 
-          <label for="input3">Write Post:</label>
-          <textarea
-          id="input3"
-          rows="18"
-          cols="100"
-          name="Description"
-          ref="Post"
-          >
-          </textarea>
-
-
-          <button className="addButton" onClick={this.handleSubmit}>
-          <NavLink NavLink exact to="/">
-          Save
-          </NavLink>
-          </button>
-
-          <button>Cancel</button>
-
-      </form>
+                <textarea
+                       name="description"
+                       value={this.state.description}
+                       onChange={this.onChange} rows="13" cols="128" placeholder="Write Post"/>
+            </label>
+            <br />
+            <button onClick={this.handleAddInput} className="homeBtn">
+            <NavLink NavLink exact to="/" className="addButton">
+             Save
+            </NavLink>
+            </button>
+            <button onClick={this.handleCancel} className="homeBtn">Cancel</button>
+          </form>
+        </div>
       </div>
     );
   }
 }
+
 export default NewPost;

@@ -1,5 +1,42 @@
 *{
   margin:2%
 }
+.addButton{
+  text-decoration: none;
+}
+body{
+  color:black;
+}
+.homeBtn{
+  border-radius: 5%;
+  border: 2px dotted black;
+  background-color: transparent;
+  width:10%;
+  height:40px;
+}
+.addButton{
+  text-decoration: none;
+}
+input[type=text] {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+#lb1{
+  padding-left:20px;
+}
+#lb2{
+  padding-left:20px
+}
+#in1{
+  margin-left:35px
+}
 
-
+.post{
+  list-style-type: none;
+  height:auto;
+}
+.description{
+  margin-top:5%
+}
